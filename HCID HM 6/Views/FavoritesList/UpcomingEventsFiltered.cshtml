@@ -1,0 +1,44 @@
+﻿@model HCID_HM.Models.FavoritesListDTO
+
+@{
+    ViewData["Title"] = "UpcomingEvents";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h2>Upcoming Events</h2>
+    </div>
+    <div class="col-6 align-content-end">
+        <a href="UpcomingEventsFiltered?days=1">Today</a>
+        <a href="UpcomingEventsFiltered?days=7">7 Days</a>
+        <a href="UpcomingEventsFiltered?days=30">30 Days</a>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-10">
+        @foreach (var item in Model.TopicsInFavoritesList)
+        {
+        <div class="container">
+            <div class="card p-2">
+                <div class="row">
+                    <div class="col-7">
+                        <img src="@item.Topic.Image" class="img-fluid" style="width:100%"/>
+                    </div>
+                    <div class="col-5">
+                        <p>Date: @item.Topic.Event</p>
+                        <p>Topic: @item.Topic.Name</p>
+                        <p>Descrpition: @item.Topic.Description</p>
+                        <a class="btn btn-primary" href="/Topics/DetailsToRemove/@item.TopicId">View Topic</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        }
+    </div>
+    <div class="col-2">
+        <h3>Calendar</h3>
+    </div>
+</div>
